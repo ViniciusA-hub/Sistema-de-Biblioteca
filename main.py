@@ -154,12 +154,11 @@ def mostrar_menu():
     print("5. Buscar livro")
     print("6. Ordenar livros")
     print("7. Sair")
-    livros = carregar_livros()
 
 while True:
     mostrar_menu()
     opcao = input("Escolha uma opção: ").strip()
-
+ 
     if opcao == "1":
         if cadastrar_livro(livros):
             salvar_livros(livros)
