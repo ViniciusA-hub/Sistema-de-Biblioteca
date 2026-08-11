@@ -68,3 +68,80 @@ def cadastrar_livro(livros):
     livros.append(novo_livro)
     print("Livro cadastrado com sucesso!")
     return True
+def emprestar_livro(livros):
+    print("\n--- EMPRÉSTIMO DE LIVRO ---")
+    isbn = input("Código/ISBN do livro: ").strip()
+
+    for livro in livros:
+        if livro["isbn"] == isbn:
+            if livro["status"] == "disponível":
+                livro["status"] = "emprestado"
+                print(f"Livro '{livro['titulo']}' emprestado com sucesso!")
+                return True
+            else:
+                print("O livro já está emprestado.")
+                return False
+
+    print("Livro não encontrado.")
+    return False
+def devolver_livro(livros):
+    print("\n--- DEVOLUÇÃO DE LIVRO ---")
+    isbn = input("Código/ISBN do livro: ").strip()
+
+    for livro in livros:
+        if livro["isbn"] == isbn:
+            if livro["status"] == "emprestado":
+                livro["status"] = "disponível"
+                print(f"Livro '{livro['titulo']}' devolvido com sucesso!")
+                return True
+            else:
+                print("O livro não está emprestado.")
+                return False
+
+    print("Livro não encontrado.")
+    return False
+def listar_livros(livros):
+    print("\n--- LISTA DE LIVROS ---")
+    if not livros:
+        print("Nenhum livro cadastrado.")
+        return
+
+    for livro in livros:
+        print(f"Título: {livro['titulo']}")
+        print(f"Autor: {livro['autor']}")
+        print(f"Ano: {livro['ano']}")
+        print(f"Código/ISBN: {livro['isbn']}")
+        print(f"Status: {livro['status']}")
+        print("------------------------")
+def buscar_livro(livros):
+    print("\n--- BUSCAR LIVRO ---")
+    isbn = input("Código/ISBN do livro: ").strip()
+
+    for livro in livros:
+        if livro["isbn"] == isbn:
+            print(f"Título: {livro['titulo']}")
+            print(f"Autor: {livro['autor']}")
+            print(f"Ano: {livro['ano']}")
+            print(f"Código/ISBN: {livro['isbn']}")
+            print(f"Status: {livro['status']}")
+            return
+
+    print("Livro não encontrado.")
+def ordenar_livros(livros):
+    print("\n--- ORDENAR LIVROS ---")
+print("1. Ordenar por título")
+print("2. Ordenar por autor")
+print("3. Ordenar por ano")
+opcao = input("Escolha uma opção: ").strip()
+
+if opcao == "1":
+        livros.sort(key=lambda x: x["titulo"])
+        print("Livros ordenados por título.")
+elif opcao == "2":
+        livros.sort(key=lambda x: x["autor"])
+        print("Livros ordenados por autor.")
+elif opcao == "3":
+        livros.sort(key=lambda x: x["ano"])
+        print("Livros ordenados por ano.")
+else:
+        print("Opção inválida..")
