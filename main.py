@@ -145,3 +145,39 @@ elif opcao == "3":
         print("Livros ordenados por ano.")
 else:
         print("Opção inválida..")
+def mostrar_menu():
+    print("\n--- MENU ---")
+    print("1. Cadastrar livro")
+    print("2. Emprestar livro")
+    print("3. Devolver livro")
+    print("4. Listar livros")
+    print("5. Buscar livro")
+    print("6. Ordenar livros")
+    print("7. Sair")
+    livros = carregar_livros()
+
+while True:
+    mostrar_menu()
+    opcao = input("Escolha uma opção: ").strip()
+
+    if opcao == "1":
+        if cadastrar_livro(livros):
+            salvar_livros(livros)
+    elif opcao == "2":
+        if emprestar_livro(livros):
+            salvar_livros(livros)
+    elif opcao == "3":
+        if devolver_livro(livros):
+            salvar_livros(livros)
+    elif opcao == "4":
+        listar_livros(livros)
+    elif opcao == "5":
+        buscar_livro(livros)
+    elif opcao == "6":
+        ordenar_livros(livros)
+        salvar_livros(livros)
+    elif opcao == "7":
+        print("Saindo do programa...")
+        break
+    else:
+        print("Opção inválida. Tente novamente.")
